@@ -70,4 +70,22 @@ class Usuarios extends \yii\db\ActiveRecord
         return $this->hasMany(Facturas::class, ['usuario_id' => 'id'])
         ->inverseOf('usuario');
     }
+
+    public function getLineas()
+    {
+        return $this->hasMany(Lineas::class, ['factura_id' => 'id'])
+            ->via('facturas');
+    }
+
+    public function getZapatosComprados()
+    {
+        return $this->hasMany(Zapatos::class, ['id' => 'zapato_id'])
+            ->via('lineas');
+    }
+
+    public function getZapatosEnCarrito()
+    {
+        return $this->hasMany(Zapatos::class, ['id' => 'zapato_id'])
+            ->via('carritos');
+    }
 }
