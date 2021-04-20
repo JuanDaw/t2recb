@@ -17,6 +17,7 @@ CREATE TABLE zapatos (
   , codigo       numeric(13) NOT NULL UNIQUE
   , denominacion varchar(60) NOT NULL
   , precio       numeric(7, 2)
+  , CONSTRAINT ck_caodigo_13 CHECK (length(codigo::text) = 13)
 );
 
 DROP TABLE IF EXISTS carritos CASCADE;
