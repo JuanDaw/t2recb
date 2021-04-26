@@ -33,6 +33,7 @@ class Carritos extends \yii\db\ActiveRecord
         return [
             [['usuario_id', 'zapato_id', 'cantidad'], 'required'],
             [['usuario_id', 'zapato_id', 'cantidad'], 'default', 'value' => null],
+            [['usuario_id', 'zapato_id'], 'unique'],
             [['usuario_id', 'zapato_id'], 'integer'],
             [['cantidad'], 'integer', 'min' => 0], 
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
